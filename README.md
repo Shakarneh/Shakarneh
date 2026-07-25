@@ -96,4 +96,5 @@ object-oriented Python and software design.
 
 ---
 
+
 <p align="center"><i>Open to back-end and full-stack software engineering opportunities.</i></p>
