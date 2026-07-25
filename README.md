@@ -1,42 +1,107 @@
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,20&height=200&section=header&text=Mohammed%20Shakarneh&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=32&desc=Software%20Development%20Engineer%20%C2%B7%20Python%20%C2%B7%20FastAPI%20%C2%B7%20Full-Stack&descSize=18&descAlignY=52" alt="banner"/>
 
 <p align="center">
-  <a href="https://github.com/Shakarneh">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3500&pause=800&color=58A6FF&center=true&vCenter=true&width=600&lines=Back-End+Developer+%7C+Python+%2B+FastAPI;Full-Stack+Delivery+%7C+React+%2B+Supabase;Shipped+a+live+store+serving+real+customers;Clean+code%2C+real+products%2C+no+shortcuts" alt="typing intro">
-  </a>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3500&pause=800&color=58A6FF&center=true&vCenter=true&width=620&lines=Back-End+Developer+%7C+Python+%2B+FastAPI;Full-Stack+Delivery+%7C+React+%2B+Supabase;I+shipped+a+store+that+serves+real+customers;Clean+code%2C+real+products%2C+no+shortcuts" alt="typing intro">
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/mohammed-shakarneh">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-  </a>
-  <a href="https://lolocosmetics.shop">
-    <img src="https://img.shields.io/badge/Live_Project-lolocosmetics.shop-E75480?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live project">
-  </a>
-  <a href="mailto:itshakarnehmohammed@gmail.com">
-    <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
-  </a>
+  <a href="https://www.linkedin.com/in/mohammed-shakarneh"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://lolocosmetics.shop"><img src="https://img.shields.io/badge/Live_Project-lolocosmetics.shop-E75480?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live project"></a>
+  <a href="mailto:itshakarnehmohammed@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
   <img src="https://komarev.com/ghpvc/?username=Shakarneh&style=for-the-badge&color=58A6FF" alt="profile views">
 </p>
 
 ---
 
-### 👋 About me
+## `GET` &nbsp;`/api/v1/developers/shakarneh`
 
-Back-end–focused software engineer with a full-stack range. I build production systems end to
-end — REST APIs, authentication, role-based access and relational data models, through to
-responsive front-ends that real users depend on. Right now I'm deepening my mastery of clean,
-object-oriented Python and software design.
-
-- 🧩 **Focus:** back-end development with **Python & FastAPI**, plus full-stack delivery
-- 🚀 **Shipped:** a live e-commerce platform serving real customers → **[lolocosmetics.shop](https://lolocosmetics.shop)**
-- 🏢 **Experience:** back-end developer internship at **Expert Choice CIS**
-- 🎓 **Studying:** Software Engineering — БГТУ им. В.Г. Шухова
-- 🌍 **Languages:** Arabic (native) · English · Russian
+```json
+{
+  "status": 200,
+  "name": "Mohammed Shakarneh",
+  "role": "Software Development Engineer",
+  "focus": ["back-end", "REST APIs", "clean architecture"],
+  "primary_stack": ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL"],
+  "also_ships": ["React", "TypeScript", "Supabase", "Cloudflare"],
+  "experience": {
+    "company": "Expert Choice CIS",
+    "role": "Back-End Developer (Internship)",
+    "built": "admin API — JWT auth, RBAC, CRUD, schedule conflict detection"
+  },
+  "in_production": "https://lolocosmetics.shop",
+  "studying": "Software Engineering @ БГТУ им. В.Г. Шухова",
+  "languages": ["Arabic (native)", "English", "Russian"],
+  "currently_learning": ["OOP mastery", "clean code", "data structures & algorithms"],
+  "open_to_work": true
+}
+```
 
 ---
 
-### 🛠️ Complete Tech Stack
+## 🧭 How a request flows through the systems I build
+
+> I can follow a request from the HTTP call through authentication, validation and business logic
+> down to the database and back — and I know where it would break.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant C as Client
+    participant A as Auth · JWT
+    participant V as Validation · Pydantic
+    participant L as Business Logic
+    participant D as Database
+
+    C->>A: HTTP request + Bearer token
+    A->>A: verify signature, check role
+    A-->>C: 401 / 403 if not allowed
+    A->>V: authorized request
+    V->>V: parse and validate schema
+    V-->>C: 422 if payload invalid
+    V->>L: clean, typed data
+    L->>L: rules, e.g. schedule conflict check
+    L->>D: query inside a transaction
+    D-->>L: rows
+    L-->>C: 200 JSON response
+```
+
+---
+
+## 🗺️ My engineering journey, as a commit history
+
+```mermaid
+gitGraph
+    commit id: "first line of code"
+    branch fundamentals
+    checkout fundamentals
+    commit id: "Java + OOP labs"
+    commit id: "PHP + MySQL full-stack"
+    checkout main
+    merge fundamentals
+    branch data
+    checkout data
+    commit id: "Pandas · 350K rows"
+    commit id: "SQL analytics"
+    checkout main
+    merge data
+    branch shipping
+    checkout shipping
+    commit id: "My Notes · desktop app"
+    commit id: "Lolo Cosmetics · LIVE"
+    checkout main
+    merge shipping
+    branch backend
+    checkout backend
+    commit id: "FastAPI internship"
+    commit id: "JWT + RBAC + conflicts"
+    checkout main
+    merge backend
+    commit id: "next: bigger systems" type: HIGHLIGHT
+```
+
+---
+
+## 🛠️ Complete Tech Stack
 
 **Languages**
 
@@ -76,7 +141,7 @@ object-oriented Python and software design.
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflarepages&logoColor=white)
-![Cloudflare Turnstile](https://img.shields.io/badge/Cloudflare_Turnstile-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
+![Turnstile](https://img.shields.io/badge/Cloudflare_Turnstile-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)
 
 **Data & Analytics**
@@ -99,24 +164,29 @@ object-oriented Python and software design.
 
 ---
 
-### 📌 Featured Projects
+## 📌 Endpoints &nbsp;·&nbsp; my projects
 
-| Project | What it is | Stack |
-|---------|-----------|-------|
-| **[Lolo Cosmetics](https://github.com/Shakarneh/lolo-cosmetics)** ⭐ · [Live](https://lolocosmetics.shop) | Production e-commerce platform for a live beauty brand — 267+ products, admin panel with analytics & review moderation, WhatsApp ordering, Arabic-first RTL design | React · TypeScript · Vite · Supabase · Cloudflare |
-| **[Attendance Tracking System](https://github.com/Shakarneh/attendance-tracking-system)** | Back-end admin API for a corporate-training attendance system — JWT auth, role-based access, full CRUD and schedule conflict detection | Python · FastAPI · SQLAlchemy · SQLite |
-| **[AI Website](https://github.com/Shakarneh/AI-Website---Artificial-Intelligence)** | Full-stack site with session-based authentication and an admin CRUD panel for users, pages, messages and reviews | PHP · MySQL · JavaScript |
-| **[My Notes](https://github.com/Shakarneh/My-Notes)** | Python-powered Windows desktop notes app — rich-text editor, Arabic RTL, dark/light themes, shipped with a real installer | Python · JS UI · PyInstaller · Inno Setup |
-| **[Java University Labs](https://github.com/Shakarneh/java-university-labs)** | OOP-focused Java labs covering logging, regex, XML and MySQL | Java · MySQL |
-| **[Data Analysis Projects](https://github.com/Shakarneh/covid-analysis)** | COVID-19 global analysis (350K-row Kaggle dataset), supermarket sales insights & SQL store analytics | Python · Pandas · Matplotlib · Jupyter · SQL |
+| | Project | What it is | Stack |
+|---|---|---|---|
+| `200 LIVE` | **[Lolo Cosmetics](https://github.com/Shakarneh/lolo-cosmetics)** · [visit ↗](https://lolocosmetics.shop) | Production e-commerce for a real beauty brand — 267+ products, admin panel with analytics & review moderation, WhatsApp ordering, Arabic-first RTL | React · TypeScript · Vite · Supabase · Cloudflare |
+| `201 BUILT` | **[Attendance Tracking System](https://github.com/Shakarneh/attendance-tracking-system)** | Back-end admin API for corporate training — JWT auth, role-based access, full CRUD, schedule conflict detection | Python · FastAPI · SQLAlchemy · SQLite |
+| `201 BUILT` | **[AI Website](https://github.com/Shakarneh/AI-Website---Artificial-Intelligence)** | Full-stack site with session auth and an admin CRUD panel for users, pages, messages, reviews | PHP · MySQL · JavaScript |
+| `200 SHIPPED` | **[My Notes](https://github.com/Shakarneh/My-Notes)** | Python-powered Windows desktop app — rich-text editor, Arabic RTL, dark/light themes, real installer | Python · PyInstaller · Inno Setup |
+| `201 BUILT` | **[Java University Labs](https://github.com/Shakarneh/java-university-labs)** | OOP-focused Java labs — logging, regex, XML, MySQL | Java · MySQL |
+| `201 BUILT` | **[Data Analysis](https://github.com/Shakarneh/covid-analysis)** | COVID-19 global analysis (350K-row Kaggle dataset), supermarket sales insights, SQL store analytics | Python · Pandas · Matplotlib · Jupyter |
 
 ---
 
-### 📊 GitHub Stats
+## 📊 Stats
 
 <p align="center">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=Shakarneh&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub stats">
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shakarneh&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" alt="Top languages">
+  <img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Shakarneh&theme=tokyonight" alt="profile details">
+</p>
+
+<p align="center">
+  <img width="32%" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Shakarneh&theme=tokyonight" alt="repos per language">
+  <img width="32%" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Shakarneh&theme=tokyonight" alt="most commit language">
+  <img width="32%" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Shakarneh&theme=tokyonight" alt="stats">
 </p>
 
 <p align="center">
@@ -125,14 +195,6 @@ object-oriented Python and software design.
 
 <p align="center">
   <img width="95%" src="https://github-readme-activity-graph.vercel.app/graph?username=Shakarneh&theme=tokyo-night&hide_border=true&area=true" alt="Contribution graph">
-</p>
-
----
-
-### 🏆 GitHub Trophies
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Shakarneh&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8" alt="Trophies">
 </p>
 
 ---
