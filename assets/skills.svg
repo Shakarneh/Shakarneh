@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="358" viewBox="0 0 880 358" role="img" aria-label="Skill focus chart">
+<style>
+.t{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif}
+.mono{font-family:ui-monospace, 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace}
+@keyframes grow{from{width:0}}
+@keyframes fade{to{opacity:1}}
+.pct{opacity:0;animation:fade .4s ease forwards}
+</style>
+<rect x="1" y="1" width="878" height="356" rx="12" fill="#1a1b26" stroke="#2f3549"/>
+<text class="t" x="24" y="36" font-size="14" font-weight="600" fill="#c0caf5">Where the work actually goes</text>
+<text class="t" x="24" y="56" font-size="11.5" fill="#565f89">GitHub measures bytes, so it thinks I write CSS. This is the real split.</text>
+<line x1="24" y1="70" x2="856" y2="70" stroke="#2f3549"/>
+<text class="t" x="24" y="107" font-size="12.5" fill="#c0caf5">Python</text>
+<rect x="250" y="95" width="560" height="14" rx="7" fill="#16161e"/>
+<rect x="250" y="95" width="515" height="14" rx="7" fill="#7aa2f7" style="animation:grow 1.1s cubic-bezier(.2,.8,.2,1) 0.00s backwards"/>
+<text class="mono pct" x="824" y="107" font-size="11.5" fill="#565f89" style="animation-delay:0.80s">92</text>
+<text class="t" x="24" y="147" font-size="12.5" fill="#c0caf5">FastAPI · REST APIs</text>
+<rect x="250" y="135" width="560" height="14" rx="7" fill="#16161e"/>
+<rect x="250" y="135" width="492" height="14" rx="7" fill="#9ece6a" style="animation:grow 1.1s cubic-bezier(.2,.8,.2,1) 0.16s backwards"/>
+<text class="mono pct" x="824" y="147" font-size="11.5" fill="#565f89" style="animation-delay:0.96s">88</text>
+<text class="t" x="24" y="187" font-size="12.5" fill="#c0caf5">SQL · data modelling</text>
+<rect x="250" y="175" width="560" height="14" rx="7" fill="#16161e"/>
+<rect x="250" y="175" width="459" height="14" rx="7" fill="#ff9e64" style="animation:grow 1.1s cubic-bezier(.2,.8,.2,1) 0.32s backwards"/>
+<text class="mono pct" x="824" y="187" font-size="11.5" fill="#565f89" style="animation-delay:1.12s">82</text>
+<text class="t" x="24" y="227" font-size="12.5" fill="#c0caf5">JavaScript · React</text>
+<rect x="250" y="215" width="560" height="14" rx="7" fill="#16161e"/>
+<rect x="250" y="215" width="420" height="14" rx="7" fill="#e0af68" style="animation:grow 1.1s cubic-bezier(.2,.8,.2,1) 0.48s backwards"/>
+<text class="mono pct" x="824" y="227" font-size="11.5" fill="#565f89" style="animation-delay:1.28s">75</text>
+<text class="t" x="24" y="267" font-size="12.5" fill="#c0caf5">PHP · Java</text>
+<rect x="250" y="255" width="560" height="14" rx="7" fill="#16161e"/>
+<rect x="250" y="255" width="324" height="14" rx="7" fill="#bb9af7" style="animation:grow 1.1s cubic-bezier(.2,.8,.2,1) 0.64s backwards"/>
+<text class="mono pct" x="824" y="267" font-size="11.5" fill="#565f89" style="animation-delay:1.44s">58</text>
+<text class="t" x="24" y="307" font-size="12.5" fill="#c0caf5">DevOps · deployment</text>
+<rect x="250" y="295" width="560" height="14" rx="7" fill="#16161e"/>
+<rect x="250" y="295" width="291" height="14" rx="7" fill="#7dcfff" style="animation:grow 1.1s cubic-bezier(.2,.8,.2,1) 0.80s backwards"/>
+<text class="mono pct" x="824" y="307" font-size="11.5" fill="#565f89" style="animation-delay:1.60s">52</text>
+</svg>

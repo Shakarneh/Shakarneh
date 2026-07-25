@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="423" viewBox="0 0 860 423" role="img" aria-label="API response describing Mohammed Shakarneh">
+<style>
+.m{font-family:ui-monospace, 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;font-size:13.5px}
+@keyframes fade{to{opacity:1}}
+@keyframes blink{50%{opacity:0}}
+@keyframes type{to{width:640px}}
+.ln{opacity:0;animation:fade .35s ease forwards}
+.cur{animation:blink 1.05s step-end infinite}
+</style>
+<rect x="1" y="1" width="858" height="421" rx="12" fill="#1a1b26" stroke="#2f3549"/>
+<path d="M1 13a12 12 0 0 1 12-12h834a12 12 0 0 1 12 12v25H1z" fill="#16161e"/>
+<line x1="1" y1="38" x2="859" y2="38" stroke="#2f3549"/>
+<circle cx="22" cy="20" r="5.5" fill="#f7768e"/>
+<circle cx="42" cy="20" r="5.5" fill="#e0af68"/>
+<circle cx="62" cy="20" r="5.5" fill="#9ece6a"/>
+<text class="m" x="430" y="25" fill="#565f89" text-anchor="middle">shakarneh — developer profile</text>
+<defs><clipPath id="tw"><rect x="0" y="0" height="100%" width="0"><animate attributeName="width" from="0" to="640" dur="1.4s" fill="freeze"/></rect></clipPath></defs>
+<g clip-path="url(#tw)"><text class="m" x="20" y="62"><tspan fill="#bb9af7">$ </tspan><tspan fill="#c0caf5">curl -s https://api.shakarneh.dev/v1/developer</tspan></text></g>
+<text class="m ln" x="20" y="78" style="animation-delay:1.60s"><tspan fill="#565f89">{</tspan></text>
+<text class="m ln" x="42" y="99" style="animation-delay:1.69s"><tspan fill="#7dcfff">&quot;status&quot;</tspan><tspan fill="#565f89">: </tspan><tspan fill="#9ece6a">200 OK</tspan><tspan fill="#565f89">,</tspan></text>
+<text class="m ln" x="42" y="120" style="animation-delay:1.77s"><tspan fill="#7dcfff">&quot;name&quot;</tspan><tspan fill="#565f89">: </tspan><tspan fill="#9ece6a">&quot;Mohammed Shakarneh&quot;</tspan><tspan fill="#565f89">,</tspan></text>
+<text class="m ln" x="42" y="141" style="animation-delay:1.85s"><tspan fill="#7dcfff">&quot;role&quot;</tspan><tspan fill="#565f89">: </tspan><tspan fill="#9ece6a">&quot;Software Development Engineer&quot;</tspan><tspan fill="#565f89">,</tspan></text>
+<text class="m ln" x="42" y="162" style="animation-delay:1.94s"><tspan fill="#7dcfff">&quot;focus&quot;</tspan><tspan fill="#565f89">: [</tspan><tspan fill="#9ece6a">&quot;back-end&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;REST APIs&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;clean architecture&quot;</tspan><tspan fill="#565f89">],</tspan></text>
+<text class="m ln" x="42" y="183" style="animation-delay:2.03s"><tspan fill="#7dcfff">&quot;stack&quot;</tspan><tspan fill="#565f89">: [</tspan><tspan fill="#9ece6a">&quot;Python&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;FastAPI&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;SQLAlchemy&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;PostgreSQL&quot;</tspan><tspan fill="#565f89">],</tspan></text>
+<text class="m ln" x="42" y="204" style="animation-delay:2.11s"><tspan fill="#7dcfff">&quot;experience&quot;</tspan><tspan fill="#565f89">: {</tspan></text>
+<text class="m ln" x="64" y="225" style="animation-delay:2.20s"><tspan fill="#7dcfff">&quot;company&quot;</tspan><tspan fill="#565f89">: </tspan><tspan fill="#9ece6a">&quot;Expert Choice CIS&quot;</tspan><tspan fill="#565f89">,</tspan></text>
+<text class="m ln" x="64" y="246" style="animation-delay:2.28s"><tspan fill="#7dcfff">&quot;built&quot;</tspan><tspan fill="#565f89">: </tspan><tspan fill="#9ece6a">&quot;admin API - JWT, RBAC, conflict detection&quot;</tspan></text>
+<text class="m ln" x="42" y="267" style="animation-delay:2.37s"><tspan fill="#565f89">},</tspan></text>
+<text class="m ln" x="42" y="288" style="animation-delay:2.45s"><tspan fill="#7dcfff">&quot;in_production&quot;</tspan><tspan fill="#565f89">: </tspan><tspan fill="#ff9e64">&quot;https://lolocosmetics.shop&quot;</tspan><tspan fill="#565f89">,</tspan></text>
+<text class="m ln" x="42" y="309" style="animation-delay:2.54s"><tspan fill="#7dcfff">&quot;languages&quot;</tspan><tspan fill="#565f89">: [</tspan><tspan fill="#9ece6a">&quot;Arabic&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;English&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;Russian&quot;</tspan><tspan fill="#565f89">],</tspan></text>
+<text class="m ln" x="42" y="330" style="animation-delay:2.62s"><tspan fill="#7dcfff">&quot;learning&quot;</tspan><tspan fill="#565f89">: [</tspan><tspan fill="#9ece6a">&quot;OOP mastery&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;clean code&quot;</tspan><tspan fill="#565f89">, </tspan><tspan fill="#9ece6a">&quot;DS &amp; algorithms&quot;</tspan><tspan fill="#565f89">],</tspan></text>
+<text class="m ln" x="42" y="351" style="animation-delay:2.71s"><tspan fill="#7dcfff">&quot;open_to_work&quot;</tspan><tspan fill="#565f89">: </tspan><tspan fill="#ff9e64">true</tspan></text>
+<text class="m ln" x="20" y="372" style="animation-delay:2.79s"><tspan fill="#565f89">}</tspan></text>
+<rect class="ln cur" x="34" y="376" width="8" height="15" fill="#7aa2f7" style="animation-delay:2.88s,0s"/>
+</svg>
