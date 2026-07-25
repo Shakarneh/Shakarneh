@@ -149,7 +149,7 @@ gitGraph
 |---|---|---|---|
 | `200 LIVE` | **[Lolo Cosmetics](https://github.com/Shakarneh/lolo-cosmetics)** · [visit ↗](https://lolocosmetics.shop) | Production e-commerce for a real beauty brand — 267+ products, admin panel with analytics & review moderation, WhatsApp ordering, Arabic-first RTL | React · TypeScript · Vite · Supabase · Cloudflare |
 | `201 BUILT` | **[Attendance Tracking System](https://github.com/Shakarneh/attendance-tracking-system)** | Back-end admin API for corporate training — JWT auth, role-based access, full CRUD, schedule conflict detection | Python · FastAPI · SQLAlchemy · SQLite |
-| `201 BUILT` | **[AI Website](https://github.com/Shakarneh/AI-Website---Artificial-Intelligence)** | Full-stack site with session auth and an admin CRUD panel for users, pages, messages, reviews | PHP · MySQL · JavaScript |
+| `200 LIVE` | **[AI Website](https://github.com/Shakarneh/AI-Website---Artificial-Intelligence)** · [visit ↗](https://shak-artificial-intelligence.infinityfreeapp.com/) | Deployed full-stack site — session-based auth and an admin CRUD panel for users, pages, messages, reviews | PHP · MySQL · JavaScript |
 | `200 SHIPPED` | **[My Notes](https://github.com/Shakarneh/My-Notes)** | Python-powered Windows desktop app — rich-text editor, Arabic RTL, dark/light themes, real installer | Python · PyInstaller · Inno Setup |
 | `201 BUILT` | **[Java University Labs](https://github.com/Shakarneh/java-university-labs)** | OOP-focused Java labs — logging, regex, XML, MySQL | Java · MySQL |
 | `201 BUILT` | **[Data Analysis](https://github.com/Shakarneh/covid-analysis)** | COVID-19 global analysis (350K-row Kaggle dataset), supermarket sales insights, SQL store analytics | Python · Pandas · Matplotlib · Jupyter |
