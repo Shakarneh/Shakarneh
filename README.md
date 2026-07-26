@@ -6,7 +6,8 @@
 
 <p align="center">
   <a href="https://www.linkedin.com/in/mohammed-shakarneh"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-  <a href="https://lolocosmetics.shop"><img src="https://img.shields.io/badge/Live_Project-lolocosmetics.shop-E75480?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live project"></a>
+  <a href="https://mohammedshakarneh.com"><img src="https://img.shields.io/badge/Portfolio-mohammedshakarneh.com-58A6FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"></a>
+  <a href="https://lolocosmetics.shop"><img src="https://img.shields.io/badge/Live_Store-lolocosmetics.shop-E75480?style=for-the-badge&logo=shopify&logoColor=white" alt="Live store"></a>
   <a href="mailto:itshakarnehmohammed@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
   <img src="https://komarev.com/ghpvc/?username=Shakarneh&style=for-the-badge&color=58A6FF" alt="profile views">
 </p>
