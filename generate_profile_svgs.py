@@ -54,21 +54,31 @@ def build_api_console() -> str:
         (1, [('"focus"', CYAN), (": [", MUTED), ('"back-end"', GREEN), (", ", MUTED),
              ('"REST APIs"', GREEN), (", ", MUTED), ('"clean architecture"', GREEN), ("],", MUTED)]),
         (1, [('"stack"', CYAN), (": [", MUTED), ('"Python"', GREEN), (", ", MUTED),
-             ('"FastAPI"', GREEN), (", ", MUTED), ('"SQLAlchemy"', GREEN), (", ", MUTED),
-             ('"PostgreSQL"', GREEN), ("],", MUTED)]),
+             ('"Django"', GREEN), (", ", MUTED), ('"FastAPI"', GREEN), (", ", MUTED),
+             ('"PostgreSQL"', GREEN), (", ", MUTED), ('"Redis"', GREEN), (", ", MUTED),
+             ('"Docker"', GREEN), ("],", MUTED)]),
+        (1, [('"latest_build"', CYAN), (": {", MUTED)]),
+        (2, [('"project"', CYAN), (": ", MUTED), ('"benchFlow"', GREEN), (",", MUTED)]),
+        (2, [('"solves"', CYAN), (": ", MUTED),
+             ('"the assignment problem - Hungarian algorithm"', GREEN), (",", MUTED)]),
+        (2, [('"proof"', CYAN), (": ", MUTED),
+             ('"649 tests - layering enforced in CI"', GREEN)]),
+        (1, [("},", MUTED)]),
         (1, [('"experience"', CYAN), (": {", MUTED)]),
         (2, [('"company"', CYAN), (": ", MUTED), ('"Expert Choice CIS"', GREEN), (",", MUTED)]),
         (2, [('"built"', CYAN), (": ", MUTED),
              ('"admin API - JWT, RBAC, conflict detection"', GREEN)]),
         (1, [("},", MUTED)]),
         (1, [('"in_production"', CYAN), (": [", MUTED)]),
+        (2, [('"https://benchflow-qfzq.onrender.com"', ORANGE), (",", MUTED)]),
+        (2, [('"https://mohammedshakarneh.com"', ORANGE), (",", MUTED)]),
         (2, [('"https://lolocosmetics.shop"', ORANGE), (",", MUTED)]),
         (2, [('"https://shak-artificial-intelligence.infinityfreeapp.com"', ORANGE)]),
         (1, [("],", MUTED)]),
         (1, [('"languages"', CYAN), (": [", MUTED), ('"Arabic"', GREEN), (", ", MUTED),
              ('"English"', GREEN), (", ", MUTED), ('"Russian"', GREEN), ("],", MUTED)]),
-        (1, [('"learning"', CYAN), (": [", MUTED), ('"OOP mastery"', GREEN), (", ", MUTED),
-             ('"clean code"', GREEN), (", ", MUTED), ('"DS & algorithms"', GREEN), ("],", MUTED)]),
+        (1, [('"learning"', CYAN), (": [", MUTED), ('"system design"', GREEN), (", ", MUTED),
+             ('"distributed systems"', GREEN), (", ", MUTED), ('"DS & algorithms"', GREEN), ("],", MUTED)]),
         (1, [('"open_to_work"', CYAN), (": ", MUTED), ("true", ORANGE)]),
         (0, [("}", MUTED)]),
     ]
@@ -130,12 +140,14 @@ def build_api_console() -> str:
 # ══════════════════════════════════════════════════════════════════════
 
 def build_request_flow() -> str:
+    # Subtitles stay framework-neutral: the same path holds for the Django
+    # project and the FastAPI one, and naming only one of them would date.
     stages = [
-        ("Client",     "HTTP + Bearer",     BLUE),
-        ("Auth",       "JWT · role check",  PURPLE),
-        ("Validation", "Pydantic schema",   CYAN),
-        ("Logic",      "business rules",    GREEN),
-        ("Database",   "transaction",       ORANGE),
+        ("Client",     "HTTP + Bearer",       BLUE),
+        ("Auth",       "session / JWT · RBAC", PURPLE),
+        ("Validation", "serializer · schema", CYAN),
+        ("Logic",      "use case · domain",   GREEN),
+        ("Database",   "transaction · lock",  ORANGE),
     ]
 
     W, H = 880, 250
@@ -201,10 +213,12 @@ def build_request_flow() -> str:
         f'<mpath href="#rail"/></animateMotion></circle>',
     ]
 
-    # failure / success codes
+    # failure / success codes. 409 is the one people forget: a broken business
+    # rule is a conflict, not a server crash.
     codes = [
         (xs[1] + bw / 2, "401 / 403", RED),
         (xs[2] + bw / 2, "422", RED),
+        (xs[3] + bw / 2, "409", ORANGE),
         (xs[4] + bw / 2, "200 OK", GREEN),
     ]
     for cx, label, colour in codes:
@@ -228,12 +242,13 @@ def build_request_flow() -> str:
 def build_skills() -> str:
     # Where the work actually goes. Edit these freely - they are yours to state.
     skills = [
-        ("Python",              92, BLUE),
-        ("FastAPI · REST APIs", 88, GREEN),
-        ("SQL · data modelling", 82, ORANGE),
-        ("JavaScript · React",  75, YELLOW),
-        ("PHP · Java",          58, PURPLE),
-        ("DevOps · deployment", 52, CYAN),
+        ("Python",                     92, BLUE),
+        ("Django · DRF · FastAPI",     88, GREEN),
+        ("SQL · data modelling",       82, ORANGE),
+        ("Algorithms · data structures", 78, PURPLE),
+        ("JavaScript · React",         75, YELLOW),
+        ("Docker · CI/CD · deployment", 70, CYAN),
+        ("PHP · Java",                 58, RED),
     ]
 
     W = 880
