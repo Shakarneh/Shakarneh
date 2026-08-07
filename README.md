@@ -1,12 +1,13 @@
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,20&height=200&section=header&text=Mohammed%20Shakarneh&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=32&desc=Software%20Development%20Engineer%20%C2%B7%20Python%20%C2%B7%20FastAPI%20%C2%B7%20Full-Stack&descSize=18&descAlignY=52" alt="banner"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,20&height=200&section=header&text=Mohammed%20Shakarneh&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=32&desc=Software%20Development%20Engineer%20%C2%B7%20Python%20%C2%B7%20Django%20%C2%B7%20FastAPI%20%C2%B7%20Full-Stack&descSize=17&descAlignY=52" alt="banner"/>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3500&pause=800&color=58A6FF&center=true&vCenter=true&width=620&lines=Back-End+Developer+%7C+Python+%2B+FastAPI;Full-Stack+Delivery+%7C+React+%2B+Supabase;I+shipped+a+store+that+serves+real+customers;Clean+code%2C+real+products%2C+no+shortcuts" alt="typing intro">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3500&pause=800&color=58A6FF&center=true&vCenter=true&width=620&lines=Back-End+Developer+%7C+Python+%2B+Django;Algorithms+in+production+%7C+the+assignment+problem;Full-Stack+Delivery+%7C+React+%2B+Supabase;Docker+%2B+CI%2FCD+%7C+shipped%2C+tested%2C+live;Clean+architecture%2C+real+products%2C+no+shortcuts" alt="typing intro">
 </p>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/mohammed-shakarneh"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
   <a href="https://mohammedshakarneh.com"><img src="https://img.shields.io/badge/Portfolio-mohammedshakarneh.com-58A6FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"></a>
+  <a href="https://benchflow-qfzq.onrender.com"><img src="https://img.shields.io/badge/Live_Demo-benchFlow-092E20?style=for-the-badge&logo=django&logoColor=white" alt="benchFlow live demo"></a>
   <a href="https://lolocosmetics.shop"><img src="https://img.shields.io/badge/Live_Store-lolocosmetics.shop-E75480?style=for-the-badge&logo=shopify&logoColor=white" alt="Live store"></a>
   <a href="mailto:itshakarnehmohammed@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
   <img src="https://komarev.com/ghpvc/?username=Shakarneh&style=for-the-badge&color=58A6FF" alt="profile views">
@@ -76,6 +77,13 @@ gitGraph
     commit id: "JWT + RBAC + conflicts"
     checkout main
     merge backend
+    branch benchflow
+    checkout benchflow
+    commit id: "domain in pure Python"
+    commit id: "Hungarian matcher"
+    commit id: "Docker + CI/CD + live"
+    checkout main
+    merge benchflow tag: "649 tests"
     commit id: "next: bigger systems" type: HIGHLIGHT
 ```
 
@@ -96,6 +104,9 @@ gitGraph
 
 **Back-End**
 
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![DRF](https://img.shields.io/badge/Django_REST-A30000?style=for-the-badge&logo=django&logoColor=white)
+![Celery](https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=python&logoColor=white)
 ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
@@ -117,9 +128,11 @@ gitGraph
 **Databases & Cloud**
 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflarepages&logoColor=white)
 ![Turnstile](https://img.shields.io/badge/Cloudflare_Turnstile-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)
@@ -136,6 +149,15 @@ gitGraph
 ![Inno Setup](https://img.shields.io/badge/Inno_Setup-005799?style=for-the-badge&logo=windows&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
 
+**DevOps & Quality**
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
+![mypy](https://img.shields.io/badge/mypy-2A6DB2?style=for-the-badge&logo=python&logoColor=white)
+![Ruff](https://img.shields.io/badge/Ruff-D7FF64?style=for-the-badge&logo=ruff&logoColor=black)
+![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?style=for-the-badge&logo=gunicorn&logoColor=white)
+
 **Tools**
 
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
@@ -148,6 +170,8 @@ gitGraph
 
 | | Project | What it is | Stack |
 |---|---|---|---|
+| `200 LIVE` | **[benchFlow](https://github.com/Shakarneh/BenchFlow)** · [visit ↗](https://benchflow-qfzq.onrender.com) | Resourcing platform for IT service companies — solves the **assignment problem** with the Hungarian algorithm, fractional allocation over a calendar, a skill graph, and a rate & margin engine. Layered architecture enforced by CI · 649 tests | Python · Django · DRF · PostgreSQL · Redis · Celery · Docker |
+| `200 LIVE` | **[Portfolio](https://github.com/Shakarneh/My-Portfolio-)** · [visit ↗](https://mohammedshakarneh.com) | Trilingual (EN/RU/AR) single-page portfolio with full RTL — vanilla HTML, CSS and JavaScript, no framework and no build step | HTML · CSS · JavaScript · Cloudflare Pages |
 | `200 LIVE` | **[Lolo Cosmetics](https://github.com/Shakarneh/lolo-cosmetics)** · [visit ↗](https://lolocosmetics.shop) | Production e-commerce for a real beauty brand — 267+ products, admin panel with analytics & review moderation, WhatsApp ordering, Arabic-first RTL | React · TypeScript · Vite · Supabase · Cloudflare |
 | `201 BUILT` | **[Attendance Tracking System](https://github.com/Shakarneh/attendance-tracking-system)** | Back-end admin API for corporate training — JWT auth, role-based access, full CRUD, schedule conflict detection | Python · FastAPI · SQLAlchemy · SQLite |
 | `200 LIVE` | **[AI Website](https://github.com/Shakarneh/AI-Website---Artificial-Intelligence)** · [visit ↗](https://shak-artificial-intelligence.infinityfreeapp.com/) | Deployed full-stack site — session-based auth and an admin CRUD panel for users, pages, messages, reviews | PHP · MySQL · JavaScript |
