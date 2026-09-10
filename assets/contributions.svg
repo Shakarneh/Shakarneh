@@ -9,6 +9,20 @@
 <rect width="812" height="230" rx="10" fill="#1a1b26" stroke="#2f3549"/>
 <text class="mono" x="20" y="30" font-size="14" font-weight="600" fill="#c0caf5">contributions</text>
 <text class="mono" x="20" y="30" font-size="14" fill="#565f89" dx="112">// last 12 months</text>
+<style>
+  @keyframes draw{from{stroke-dashoffset:26}to{stroke-dashoffset:0}}
+  @keyframes bob{0%,100%{transform:translate(0,0)}50%{transform:translate(2px,-2px)}}
+  .arw{stroke-dasharray:26;animation:draw .9s ease-out .4s backwards}
+  .arwg{animation:bob 2.6s ease-in-out 1.4s infinite}
+</style>
+<g transform="translate(653,26)">
+<g class="arwg">
+<path class="arw" d="M0,10 L13,-3" fill="none" stroke="#9ece6a" stroke-width="2.2" stroke-linecap="round"/>
+<path class="arw" d="M13,-3 L6,-3 M13,-3 L13,4" fill="none" stroke="#9ece6a" stroke-width="2.2" stroke-linecap="round" style="animation-delay:1.0s"/>
+</g>
+<text class="mono" x="20" y="8" font-size="14" font-weight="700" fill="#9ece6a">+135%</text>
+<text class="mono" x="76" y="8" font-size="10" fill="#565f89">vs prev 30d</text>
+</g>
 <text class="mono" x="46" y="50" font-size="10" fill="#565f89">Sep</text>
 <text class="mono" x="102" y="50" font-size="10" fill="#565f89">Oct</text>
 <text class="mono" x="158" y="50" font-size="10" fill="#565f89">Nov</text>
@@ -392,7 +406,7 @@
 <rect class="d" x="774" y="72" width="11" height="11" rx="2.5" fill="#9ece6a" style="animation-delay:0.62s"><title>2026-09-07: 81</title></rect>
 <rect class="d" x="774" y="86" width="11" height="11" rx="2.5" fill="#63b06b" style="animation-delay:0.62s"><title>2026-09-08: 55</title></rect>
 <rect class="d" x="774" y="100" width="11" height="11" rx="2.5" fill="#63b06b" style="animation-delay:0.62s"><title>2026-09-09: 65</title></rect>
-<rect class="d" x="774" y="114" width="11" height="11" rx="2.5" fill="#171b26" style="animation-delay:0.62s"><title>2026-09-10: 0</title></rect>
+<rect class="d" x="774" y="114" width="11" height="11" rx="2.5" fill="#2c4b3c" style="animation-delay:0.62s"><title>2026-09-10: 1</title></rect>
 <text class="mono" x="638" y="181" font-size="9.5" fill="#565f89">Less</text>
 <rect x="672" y="172" width="11" height="11" rx="2.5" fill="#171b26"/>
 <rect x="686" y="172" width="11" height="11" rx="2.5" fill="#2c4b3c"/>
@@ -401,19 +415,19 @@
 <rect x="728" y="172" width="11" height="11" rx="2.5" fill="#9ece6a"/>
 <text class="mono" x="746" y="181" font-size="9.5" fill="#565f89">More</text>
 <g class="stat" style="animation-delay:0.90s">
-<text class="mono" x="97" y="208" font-size="17" font-weight="700" fill="#9ece6a" text-anchor="middle">1 602</text>
+<text class="mono" x="97" y="208" font-size="17" font-weight="700" fill="#9ece6a" text-anchor="middle">1 603</text>
 <text class="mono" x="97" y="223" font-size="10" fill="#565f89" text-anchor="middle">contributions</text>
 </g>
 <g class="stat" style="animation-delay:0.99s">
-<text class="mono" x="252" y="208" font-size="17" font-weight="700" fill="#ff9e64" text-anchor="middle">20</text>
+<text class="mono" x="252" y="208" font-size="17" font-weight="700" fill="#ff9e64" text-anchor="middle">21</text>
 <text class="mono" x="252" y="223" font-size="10" fill="#565f89" text-anchor="middle">day streak</text>
 </g>
 <g class="stat" style="animation-delay:1.08s">
-<text class="mono" x="406" y="208" font-size="17" font-weight="700" fill="#bb9af7" text-anchor="middle">20</text>
+<text class="mono" x="406" y="208" font-size="17" font-weight="700" fill="#bb9af7" text-anchor="middle">21</text>
 <text class="mono" x="406" y="223" font-size="10" fill="#565f89" text-anchor="middle">longest streak</text>
 </g>
 <g class="stat" style="animation-delay:1.17s">
-<text class="mono" x="560" y="208" font-size="17" font-weight="700" fill="#7dcfff" text-anchor="middle">69</text>
+<text class="mono" x="560" y="208" font-size="17" font-weight="700" fill="#7dcfff" text-anchor="middle">70</text>
 <text class="mono" x="560" y="223" font-size="10" fill="#565f89" text-anchor="middle">active days</text>
 </g>
 <g class="stat" style="animation-delay:1.26s">

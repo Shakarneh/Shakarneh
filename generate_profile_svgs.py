@@ -372,6 +372,35 @@ def contribution_stats(data: dict) -> dict:
     }
 
 
+
+def contribution_trend(data: dict, window: int = 30) -> dict:
+    """Recent activity against the window before it.
+
+    30 days on purpose: with a near-zero baseline earlier in the year, a 60- or
+    90-day window produces percentages in the thousands, which reads as inflation
+    rather than progress.
+    """
+    from datetime import date, timedelta
+
+    days = sorted(data)
+    last = date.fromisoformat(days[-1])
+
+    def total(a, b):
+        return sum(v["n"] for k, v in data.items() if a <= date.fromisoformat(k) <= b)
+
+    cur = total(last - timedelta(days=window - 1), last)
+    prev = total(last - timedelta(days=2 * window - 1), last - timedelta(days=window))
+
+    if prev == 0:
+        pct, direction = (None if cur == 0 else 100.0), ("flat" if cur == 0 else "up")
+    else:
+        change = (cur - prev) / prev * 100
+        pct = change
+        direction = "up" if change > 2 else "down" if change < -2 else "flat"
+    return {"cur": cur, "prev": prev, "pct": pct, "dir": direction, "window": window}
+
+
+
 def build_contributions(data: dict | None = None) -> str:
     from datetime import date
 
@@ -411,6 +440,43 @@ def build_contributions(data: dict | None = None) -> str:
         f"contributions</text>",
         f'<text class="mono" x="20" y="30" font-size="14" fill="{MUTED}" '
         f'dx="112">// last 12 months</text>',
+    ]
+
+    # ── animated trend arrow: draws itself, then drifts in its own direction ──
+    tr = contribution_trend(data)
+    t_col = {"up": GREEN, "down": RED, "flat": MUTED}[tr["dir"]]
+    label = "steady" if tr["pct"] is None else f"{tr['pct']:+.0f}%"
+    sub = f"vs prev {tr['window']}d"
+    grp_w = 20 + len(label) * 9.5 + 10 + len(sub) * 5.6
+    gx = W - 20 - grp_w
+
+    if tr["dir"] == "up":
+        shaft, head, bob = "M0,10 L13,-3", "M13,-3 L6,-3 M13,-3 L13,4", "2px,-2px"
+    elif tr["dir"] == "down":
+        shaft, head, bob = "M0,-3 L13,10", "M13,10 L6,10 M13,10 L13,3", "2px,2px"
+    else:
+        shaft, head, bob = "M0,4 L13,4", "M13,4 L7,0 M13,4 L7,8", "2px,0"
+
+    p += [
+        "<style>",
+        "  @keyframes draw{from{stroke-dashoffset:26}to{stroke-dashoffset:0}}",
+        f"  @keyframes bob{{0%,100%{{transform:translate(0,0)}}"
+        f"50%{{transform:translate({bob})}}}}",
+        "  .arw{stroke-dasharray:26;animation:draw .9s ease-out .4s backwards}",
+        "  .arwg{animation:bob 2.6s ease-in-out 1.4s infinite}",
+        "</style>",
+        f'<g transform="translate({gx:.0f},26)">',
+        f'<g class="arwg">',
+        f'<path class="arw" d="{shaft}" fill="none" stroke="{t_col}" stroke-width="2.2" '
+        f'stroke-linecap="round"/>',
+        f'<path class="arw" d="{head}" fill="none" stroke="{t_col}" stroke-width="2.2" '
+        f'stroke-linecap="round" style="animation-delay:1.0s"/>',
+        "</g>",
+        f'<text class="mono" x="20" y="8" font-size="14" font-weight="700" '
+        f'fill="{t_col}">{esc(label)}</text>',
+        f'<text class="mono" x="{20 + len(label) * 9.5 + 8:.0f}" y="8" font-size="10" '
+        f'fill="{MUTED}">{esc(sub)}</text>',
+        "</g>",
     ]
 
     # month labels
