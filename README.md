@@ -194,11 +194,7 @@ gitGraph
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Shakarneh&theme=tokyonight&hide_border=true" alt="GitHub streak">
-</p>
-
-<p align="center">
-  <img width="95%" src="https://github-readme-activity-graph.vercel.app/graph?username=Shakarneh&theme=tokyo-night&hide_border=true&area=true" alt="Contribution graph">
+  <img width="95%" src="https://raw.githubusercontent.com/Shakarneh/Shakarneh/main/assets/contributions.svg" alt="Contribution calendar and streak figures">
 </p>
 
 ---

@@ -7,7 +7,8 @@ committed to the repo, and served by GitHub itself - so they are always accurate
 and can never break.
 
 Run:  python generate_profile_svgs.py
-Out:  assets/api_console.svg, assets/request_flow.svg, assets/skills.svg
+Out:  assets/api_console.svg, assets/request_flow.svg, assets/skills.svg,
+      assets/contributions.svg  (fetches live data from GitHub)
 """
 
 from pathlib import Path
@@ -291,12 +292,191 @@ def build_skills() -> str:
     return "\n".join(parts)
 
 
+
+# ══════════════════════════════════════════════════════════════════════
+# 4. CONTRIBUTIONS - the calendar heatmap plus streak figures
+#
+# Replaces streak-stats.demolab.com and github-readme-activity-graph,
+# both of which died with "Failed to retrieve contributions".
+# Data is pulled from GitHub's own public contributions endpoint at
+# generation time, then baked into the SVG - so the picture is real and
+# can never 503. Re-run this script to refresh it.
+# ══════════════════════════════════════════════════════════════════════
+
+CONTRIB_USER = "Shakarneh"
+LEVEL_FILL = {0: "#171b26", 1: "#2c4b3c", 2: "#3f7d52", 3: "#63b06b", 4: "#9ece6a"}
+MONTHS_RU = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def fetch_contributions(user: str = CONTRIB_USER) -> dict:
+    """Real per-day contribution counts from GitHub's public calendar.
+
+    No token needed - this is the same endpoint the profile page renders.
+    Returns {"YYYY-MM-DD": {"n": int, "lvl": 0-4}}.
+    """
+    import re
+    import urllib.request
+
+    req = urllib.request.Request(
+        f"https://github.com/users/{user}/contributions",
+        headers={"User-Agent": "Mozilla/5.0"},
+    )
+    html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+
+    tips = dict(re.findall(r'<tool-tip[^>]*\bfor="([^"]+)"[^>]*>(.*?)</tool-tip>', html, re.S))
+    out = {}
+    for td in re.findall(r'<td\b[^>]*class="ContributionCalendar-day"[^>]*>', html):
+        date = re.search(r'data-date="(\d{4}-\d{2}-\d{2})"', td)
+        cid = re.search(r'\bid="([^"]+)"', td)
+        lvl = re.search(r'data-level="(\d)"', td)
+        if not (date and cid):
+            continue
+        hit = re.search(r"(\d+)\s+contribution", tips.get(cid.group(1), ""))
+        out[date.group(1)] = {
+            "n": int(hit.group(1)) if hit else 0,
+            "lvl": int(lvl.group(1)) if lvl else 0,
+        }
+    if not out:
+        raise RuntimeError("GitHub returned no contribution cells - markup changed?")
+    return out
+
+
+def contribution_stats(data: dict) -> dict:
+    """Total, current streak, longest streak, active days, best day."""
+    days = sorted(data)
+    total = sum(v["n"] for v in data.values())
+
+    current = 0
+    for d in reversed(days):
+        if data[d]["n"] > 0:
+            current += 1
+        elif d != days[-1]:          # today being empty does not end the streak
+            break
+
+    longest = run = 0
+    for d in days:
+        run = run + 1 if data[d]["n"] > 0 else 0
+        longest = max(longest, run)
+
+    best = max(days, key=lambda d: data[d]["n"])
+    return {
+        "total": total,
+        "current": current,
+        "longest": longest,
+        "active": sum(1 for v in data.values() if v["n"] > 0),
+        "best": data[best]["n"],
+        "best_date": best,
+        "from": days[0],
+        "to": days[-1],
+    }
+
+
+def build_contributions(data: dict | None = None) -> str:
+    from datetime import date
+
+    data = data or fetch_contributions()
+    st = contribution_stats(data)
+    days = sorted(data)
+
+    CELL, GAP = 11, 3
+    STEP = CELL + GAP
+    X0, Y0 = 46, 58
+
+    # Column = ISO week index relative to the first Sunday, row = weekday.
+    first = date.fromisoformat(days[0])
+    cols = {}
+    for d in days:
+        cur = date.fromisoformat(d)
+        col = (cur - first).days // 7
+        row = (cur.weekday() + 1) % 7          # Sunday-first, matching GitHub
+        cols.setdefault(col, []).append((row, d))
+
+    ncols = max(cols) + 1
+    W = X0 + ncols * STEP + 24
+    H = Y0 + 7 * STEP + 74
+
+    p = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+        f'viewBox="0 0 {W} {H}" font-family="{SANS}">',
+        "<style>",
+        f"  .mono{{font-family:{FONT}}}",
+        "  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}",
+        "  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}",
+        "  rect.d{animation:pop .5s cubic-bezier(.2,.8,.2,1) backwards;transform-origin:center}",
+        "  .stat{animation:rise .6s ease-out backwards}",
+        "</style>",
+        f'<rect width="{W}" height="{H}" rx="10" fill="{BG}" stroke="{BORDER}"/>',
+        f'<text class="mono" x="20" y="30" font-size="14" font-weight="600" fill="{FG}">'
+        f"contributions</text>",
+        f'<text class="mono" x="20" y="30" font-size="14" fill="{MUTED}" '
+        f'dx="112">// last 12 months</text>',
+    ]
+
+    # month labels
+    seen = set()
+    for col in sorted(cols):
+        row0 = sorted(cols[col])[0][1]
+        mo = date.fromisoformat(row0).month
+        if mo not in seen and date.fromisoformat(row0).day <= 7:
+            seen.add(mo)
+            p.append(f'<text class="mono" x="{X0 + col * STEP}" y="{Y0 - 8}" '
+                     f'font-size="10" fill="{MUTED}">{MONTHS_RU[mo - 1]}</text>')
+
+    for i, lbl in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
+        p.append(f'<text class="mono" x="14" y="{Y0 + i * STEP + 9}" font-size="9" '
+                 f'fill="{MUTED}">{lbl}</text>')
+
+    for col in sorted(cols):
+        for row, d in cols[col]:
+            lvl = data[d]["lvl"]
+            delay = col * 0.012
+            p.append(
+                f'<rect class="d" x="{X0 + col * STEP}" y="{Y0 + row * STEP}" '
+                f'width="{CELL}" height="{CELL}" rx="2.5" fill="{LEVEL_FILL[lvl]}" '
+                f'style="animation-delay:{delay:.2f}s"><title>{d}: {data[d]["n"]}</title></rect>'
+            )
+
+    # legend
+    lx = W - 24 - 5 * STEP - 46
+    ly = Y0 + 7 * STEP + 16
+    p.append(f'<text class="mono" x="{lx - 34}" y="{ly + 9}" font-size="9.5" fill="{MUTED}">Less</text>')
+    for i in range(5):
+        p.append(f'<rect x="{lx + i * STEP}" y="{ly}" width="{CELL}" height="{CELL}" '
+                 f'rx="2.5" fill="{LEVEL_FILL[i]}"/>')
+    p.append(f'<text class="mono" x="{lx + 5 * STEP + 4}" y="{ly + 9}" font-size="9.5" '
+             f'fill="{MUTED}">More</text>')
+
+    # stat strip
+    sy = Y0 + 7 * STEP + 52
+    stats = [
+        (f"{st['total']:,}".replace(",", " "), "contributions", GREEN),
+        (str(st["current"]), "day streak", ORANGE),
+        (str(st["longest"]), "longest streak", PURPLE),
+        (str(st["active"]), "active days", CYAN),
+        (str(st["best"]), "best day", BLUE),
+    ]
+    span = (W - 40) / len(stats)
+    for i, (big, small, col) in enumerate(stats):
+        cx = 20 + span * i + span / 2
+        p.append(f'<g class="stat" style="animation-delay:{0.9 + i * .09:.2f}s">')
+        p.append(f'<text class="mono" x="{cx:.0f}" y="{sy}" font-size="17" font-weight="700" '
+                 f'fill="{col}" text-anchor="middle">{esc(big)}</text>')
+        p.append(f'<text class="mono" x="{cx:.0f}" y="{sy + 15}" font-size="10" '
+                 f'fill="{MUTED}" text-anchor="middle">{esc(small)}</text>')
+        p.append("</g>")
+
+    p.append("</svg>")
+    return "\n".join(p)
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for name, svg in (
         ("api_console.svg", build_api_console()),
         ("request_flow.svg", build_request_flow()),
         ("skills.svg", build_skills()),
+        ("contributions.svg", build_contributions()),
     ):
         (OUT / name).write_text(svg, encoding="utf-8")
         print(f"wrote assets/{name}  ({len(svg):,} bytes)")
