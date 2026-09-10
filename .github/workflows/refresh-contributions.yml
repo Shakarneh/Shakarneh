@@ -1,0 +1,50 @@
+name: Refresh contributions SVG
+
+# Why this exists: assets/contributions.svg is generated, not live. Without this
+# workflow the calendar, the streak figures and the trend arrow freeze at whatever
+# they were the last time the script was run by hand.
+#
+# The generator reads GitHub's own public contributions endpoint, so no token or
+# secret is needed - GITHUB_TOKEN is only used to push the regenerated file back.
+
+on:
+  schedule:
+    - cron: "17 3 * * *"     # 03:17 UTC daily; off the hour to dodge peak load
+  workflow_dispatch:          # lets you run it manually from the Actions tab
+  push:
+    paths:
+      - generate_profile_svgs.py   # regenerate whenever the generator changes
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-contributions
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The generator is stdlib-only (urllib, re, datetime, pathlib), so there is
+      # nothing to install.
+      - name: Regenerate SVGs
+        run: python generate_profile_svgs.py
+
+      - name: Commit if the picture changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- assets/; then
+            echo "No change in assets/ - nothing to commit."
+            exit 0
+          fi
+          git add assets/
+          git commit -m "Refresh contributions SVG [skip ci]"
+          git push
