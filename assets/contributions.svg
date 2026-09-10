@@ -32,13 +32,13 @@
 <text class="mono" x="747.8" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Sep</text>
 <path class="ar" d="M58.0,156.0 L72.4,156.0 L86.7,156.0 L101.1,156.0 L115.5,156.0 L129.9,156.0 L144.2,156.0 L158.6,156.0 L173.0,156.0 L187.3,156.0 L201.7,156.0 L216.1,156.0 L230.5,156.0 L244.8,156.0 L259.2,156.0 L273.6,156.0 L287.9,156.0 L302.3,156.0 L316.7,156.0 L331.1,156.0 L345.4,156.0 L359.8,156.0 L374.2,156.0 L388.5,156.0 L402.9,156.0 L417.3,156.0 L431.7,156.0 L446.0,156.0 L460.4,156.0 L474.8,155.5 L489.2,155.5 L503.5,155.4 L517.9,155.4 L532.3,155.7 L546.6,155.5 L561.0,155.0 L575.4,154.9 L589.8,154.7 L604.1,153.7 L618.5,154.3 L632.9,152.3 L647.2,149.2 L661.6,145.0 L676.0,136.6 L690.4,128.0 L704.7,130.4 L719.1,114.1 L733.5,112.1 L747.8,98.0 L754.0,91.0 L754.0,156 L58.0,156 Z" fill="#9ece6a" fill-opacity=".15"/>
 <path class="ln" d="M58.0,156.0 L72.4,156.0 L86.7,156.0 L101.1,156.0 L115.5,156.0 L129.9,156.0 L144.2,156.0 L158.6,156.0 L173.0,156.0 L187.3,156.0 L201.7,156.0 L216.1,156.0 L230.5,156.0 L244.8,156.0 L259.2,156.0 L273.6,156.0 L287.9,156.0 L302.3,156.0 L316.7,156.0 L331.1,156.0 L345.4,156.0 L359.8,156.0 L374.2,156.0 L388.5,156.0 L402.9,156.0 L417.3,156.0 L431.7,156.0 L446.0,156.0 L460.4,156.0 L474.8,155.5 L489.2,155.5 L503.5,155.4 L517.9,155.4 L532.3,155.7 L546.6,155.5 L561.0,155.0 L575.4,154.9 L589.8,154.7 L604.1,153.7 L618.5,154.3 L632.9,152.3 L647.2,149.2 L661.6,145.0 L676.0,136.6 L690.4,128.0 L704.7,130.4 L719.1,114.1 L733.5,112.1 L747.8,98.0 L754.0,91.0" fill="none" stroke="#9ece6a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
-<g class="tip" transform="translate(754.0,91.0) rotate(-48.5)"><path d="M-13,-8 L3,0 L-13,8 L-9,0 Z" fill="#9ece6a"/></g>
+<g class="tip" transform="translate(754.0,91.0) rotate(-48.7)"><path d="M-13,-8 L3,0 L-13,8 L-9,0 Z" fill="#9ece6a"/></g>
 <g class="lb" style="animation-delay:2.15s">
-<text class="mono" x="728" y="82" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="end">1 083</text>
+<text class="mono" x="728" y="82" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="end">1 084</text>
 <text class="mono" x="728" y="96" font-size="9.5" fill="#565f89" text-anchor="end">last 30 days &#183; +139%</text>
 </g>
 <g class="lb" style="animation-delay:2.30s">
-<text class="mono" x="97" y="208" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="middle">1 621</text>
+<text class="mono" x="97" y="208" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="middle">1 622</text>
 <text class="mono" x="97" y="222" font-size="9.5" fill="#565f89" text-anchor="middle">contributions</text>
 </g>
 <g class="lb" style="animation-delay:2.38s">
