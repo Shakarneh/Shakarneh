@@ -402,119 +402,123 @@ def contribution_trend(data: dict, window: int = 30) -> dict:
 
 
 def build_contributions(data: dict | None = None) -> str:
-    from datetime import date
+    """A rising-arrow trend chart - deliberately NOT a square heatmap.
+
+    GitHub already renders the contribution squares directly above this image on
+    the profile, so repeating them here wastes the space. This shows the shape of
+    the year instead: a 30-day rolling total, drawn as a trajectory that ends in
+    an arrowhead.
+
+    Why rolling-30 and not calendar months: the current month is always partial.
+    On 10 Sep the monthly figures read 770 (Aug) then 553 (Sep), so a monthly line
+    would point DOWN while activity was in fact at its highest. A rolling window
+    compares equal-length periods and cannot produce that artefact.
+    """
+    from datetime import date, timedelta
 
     data = data or fetch_contributions()
     st = contribution_stats(data)
+    tr = contribution_trend(data)
+
     days = sorted(data)
+    first, last = date.fromisoformat(days[0]), date.fromisoformat(days[-1])
+    vals = {date.fromisoformat(k): v["n"] for k, v in data.items()}
 
-    CELL, GAP = 11, 3
-    STEP = CELL + GAP
-    X0, Y0 = 46, 58
+    def rolling(end: date, w: int = 30) -> int:
+        return sum(vals.get(end - timedelta(days=i), 0) for i in range(w))
 
-    # Column = ISO week index relative to the first Sunday, row = weekday.
-    first = date.fromisoformat(days[0])
-    cols = {}
-    for d in days:
-        cur = date.fromisoformat(d)
-        col = (cur - first).days // 7
-        row = (cur.weekday() + 1) % 7          # Sunday-first, matching GitHub
-        cols.setdefault(col, []).append((row, d))
+    series, cur = [], first + timedelta(days=29)
+    while cur <= last:
+        series.append((cur, rolling(cur)))
+        cur += timedelta(days=7)
+    if series[-1][0] != last:
+        series.append((last, rolling(last)))
 
-    ncols = max(cols) + 1
-    W = X0 + ncols * STEP + 24
-    H = Y0 + 7 * STEP + 74
+    W, H = 812, 230
+    X0, X1 = 58, W - 58
+    YT, YB = 66, 156
+    peak = max(v for _, v in series)
+    raw = peak * 1.16
+    step = 10 ** (len(str(int(raw))) - 1) // 2 or 50
+    ymax = max(100, int(-(-raw // step) * step))
+
+    span = (series[-1][0] - series[0][0]).days or 1
+
+    def px(d: date) -> float:
+        return X0 + (d - series[0][0]).days / span * (X1 - X0)
+
+    def py(v: int) -> float:
+        return YB - (v / ymax) * (YB - YT)
+
+    pts = [(px(d), py(v)) for d, v in series]
+    line = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+    area = line + f" L{pts[-1][0]:.1f},{YB} L{pts[0][0]:.1f},{YB} Z"
+
+    col = {"up": GREEN, "down": RED, "flat": MUTED}[tr["dir"]]
+    trend_label = "steady" if tr["pct"] is None else f"{tr['pct']:+.0f}%"
 
     p = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
         f'viewBox="0 0 {W} {H}" font-family="{SANS}">',
         "<style>",
         f"  .mono{{font-family:{FONT}}}",
-        "  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}",
-        "  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}",
-        "  rect.d{animation:pop .5s cubic-bezier(.2,.8,.2,1) backwards;transform-origin:center}",
-        "  .stat{animation:rise .6s ease-out backwards}",
+        "  @keyframes drawline{to{stroke-dashoffset:0}}",
+        "  @keyframes fadein{from{opacity:0}to{opacity:1}}",
+        "  @keyframes tip{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}",
+        "  @keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}",
+        "  .ln{stroke-dasharray:3000;stroke-dashoffset:3000;"
+        "animation:drawline 1.9s cubic-bezier(.3,.7,.3,1) .2s forwards}",
+        "  .ar{animation:fadein 1.1s ease-out 1.2s backwards}",
+        "  .tip{animation:tip .55s cubic-bezier(.2,1.4,.4,1) 1.85s backwards;transform-origin:center}",
+        "  .lb{animation:rise .6s ease-out backwards}",
         "</style>",
         f'<rect width="{W}" height="{H}" rx="10" fill="{BG}" stroke="{BORDER}"/>',
         f'<text class="mono" x="20" y="30" font-size="14" font-weight="600" fill="{FG}">'
         f"contributions</text>",
-        f'<text class="mono" x="20" y="30" font-size="14" fill="{MUTED}" '
-        f'dx="112">// last 12 months</text>',
+        f'<text class="mono" x="20" y="30" dx="112" font-size="14" fill="{MUTED}">'
+        f"// 30-day rolling total</text>",
     ]
 
-    # ── animated trend arrow: draws itself, then drifts in its own direction ──
-    tr = contribution_trend(data)
-    t_col = {"up": GREEN, "down": RED, "flat": MUTED}[tr["dir"]]
-    label = "steady" if tr["pct"] is None else f"{tr['pct']:+.0f}%"
-    sub = f"vs prev {tr['window']}d"
-    grp_w = 20 + len(label) * 9.5 + 10 + len(sub) * 5.6
-    gx = W - 20 - grp_w
+    # horizontal guides
+    for frac in (0.5, 1.0):
+        gy = YB - frac * (YB - YT)
+        p.append(f'<line x1="{X0}" y1="{gy:.1f}" x2="{X1}" y2="{gy:.1f}" '
+                 f'stroke="{BORDER}" stroke-width="1" stroke-dasharray="3 5" opacity=".55"/>')
+        p.append(f'<text class="mono" x="{X0 - 8}" y="{gy + 3.5:.1f}" font-size="9.5" '
+                 f'fill="{MUTED}" text-anchor="end">{int(ymax * frac)}</text>')
+    p.append(f'<line x1="{X0}" y1="{YB}" x2="{X1}" y2="{YB}" stroke="{BORDER}" stroke-width="1.4"/>')
 
-    if tr["dir"] == "up":
-        shaft, head, bob = "M0,10 L13,-3", "M13,-3 L6,-3 M13,-3 L13,4", "2px,-2px"
-    elif tr["dir"] == "down":
-        shaft, head, bob = "M0,-3 L13,10", "M13,10 L6,10 M13,10 L13,3", "2px,2px"
-    else:
-        shaft, head, bob = "M0,4 L13,4", "M13,4 L7,0 M13,4 L7,8", "2px,0"
-
-    p += [
-        "<style>",
-        "  @keyframes draw{from{stroke-dashoffset:26}to{stroke-dashoffset:0}}",
-        f"  @keyframes bob{{0%,100%{{transform:translate(0,0)}}"
-        f"50%{{transform:translate({bob})}}}}",
-        "  .arw{stroke-dasharray:26;animation:draw .9s ease-out .4s backwards}",
-        "  .arwg{animation:bob 2.6s ease-in-out 1.4s infinite}",
-        "</style>",
-        f'<g transform="translate({gx:.0f},26)">',
-        f'<g class="arwg">',
-        f'<path class="arw" d="{shaft}" fill="none" stroke="{t_col}" stroke-width="2.2" '
-        f'stroke-linecap="round"/>',
-        f'<path class="arw" d="{head}" fill="none" stroke="{t_col}" stroke-width="2.2" '
-        f'stroke-linecap="round" style="animation-delay:1.0s"/>',
-        "</g>",
-        f'<text class="mono" x="20" y="8" font-size="14" font-weight="700" '
-        f'fill="{t_col}">{esc(label)}</text>',
-        f'<text class="mono" x="{20 + len(label) * 9.5 + 8:.0f}" y="8" font-size="10" '
-        f'fill="{MUTED}">{esc(sub)}</text>',
-        "</g>",
-    ]
-
-    # month labels
+    # month ticks
     seen = set()
-    for col in sorted(cols):
-        row0 = sorted(cols[col])[0][1]
-        mo = date.fromisoformat(row0).month
-        if mo not in seen and date.fromisoformat(row0).day <= 7:
-            seen.add(mo)
-            p.append(f'<text class="mono" x="{X0 + col * STEP}" y="{Y0 - 8}" '
-                     f'font-size="10" fill="{MUTED}">{MONTHS_RU[mo - 1]}</text>')
+    for d, _ in series:
+        if d.month not in seen:
+            seen.add(d.month)
+            p.append(f'<text class="mono" x="{px(d):.1f}" y="{YB + 16}" font-size="9.5" '
+                     f'fill="{MUTED}" text-anchor="middle">{MONTHS_RU[d.month - 1]}</text>')
 
-    for i, lbl in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
-        p.append(f'<text class="mono" x="14" y="{Y0 + i * STEP + 9}" font-size="9" '
-                 f'fill="{MUTED}">{lbl}</text>')
+    p.append(f'<path class="ar" d="{area}" fill="{col}" fill-opacity=".15"/>')
+    p.append(f'<path class="ln" d="{line}" fill="none" stroke="{col}" stroke-width="2.6" '
+             f'stroke-linejoin="round" stroke-linecap="round"/>')
 
-    for col in sorted(cols):
-        for row, d in cols[col]:
-            lvl = data[d]["lvl"]
-            delay = col * 0.012
-            p.append(
-                f'<rect class="d" x="{X0 + col * STEP}" y="{Y0 + row * STEP}" '
-                f'width="{CELL}" height="{CELL}" rx="2.5" fill="{LEVEL_FILL[lvl]}" '
-                f'style="animation-delay:{delay:.2f}s"><title>{d}: {data[d]["n"]}</title></rect>'
-            )
+    # arrowhead, oriented along the final segment
+    import math
+    (x1, y1), (x2, y2) = pts[-2], pts[-1]
+    ang = math.degrees(math.atan2(y2 - y1, x2 - x1))
+    p.append(f'<g class="tip" transform="translate({x2:.1f},{y2:.1f}) rotate({ang:.1f})">'
+             f'<path d="M-13,-8 L3,0 L-13,8 L-9,0 Z" fill="{col}"/></g>')
 
-    # legend
-    lx = W - 24 - 5 * STEP - 46
-    ly = Y0 + 7 * STEP + 16
-    p.append(f'<text class="mono" x="{lx - 34}" y="{ly + 9}" font-size="9.5" fill="{MUTED}">Less</text>')
-    for i in range(5):
-        p.append(f'<rect x="{lx + i * STEP}" y="{ly}" width="{CELL}" height="{CELL}" '
-                 f'rx="2.5" fill="{LEVEL_FILL[i]}"/>')
-    p.append(f'<text class="mono" x="{lx + 5 * STEP + 4}" y="{ly + 9}" font-size="9.5" '
-             f'fill="{MUTED}">More</text>')
+    # value + trend label at the tip
+    lx = x2 - 26
+    ly = max(y2 - 14, YT + 16)
+    p.append('<g class="lb" style="animation-delay:2.15s">')
+    p.append(f'<text class="mono" x="{lx:.0f}" y="{ly:.0f}" font-size="16" font-weight="700" '
+             f'fill="{col}" text-anchor="end">{series[-1][1]:,}</text>'.replace(",", " "))
+    p.append(f'<text class="mono" x="{lx:.0f}" y="{ly + 14:.0f}" font-size="9.5" fill="{MUTED}" '
+             f'text-anchor="end">last 30 days &#183; {esc(trend_label)}</text>')
+    p.append("</g>")
 
     # stat strip
-    sy = Y0 + 7 * STEP + 52
+    sy = H - 22
     stats = [
         (f"{st['total']:,}".replace(",", " "), "contributions", GREEN),
         (str(st["current"]), "day streak", ORANGE),
@@ -522,18 +526,19 @@ def build_contributions(data: dict | None = None) -> str:
         (str(st["active"]), "active days", CYAN),
         (str(st["best"]), "best day", BLUE),
     ]
-    span = (W - 40) / len(stats)
-    for i, (big, small, col) in enumerate(stats):
-        cx = 20 + span * i + span / 2
-        p.append(f'<g class="stat" style="animation-delay:{0.9 + i * .09:.2f}s">')
-        p.append(f'<text class="mono" x="{cx:.0f}" y="{sy}" font-size="17" font-weight="700" '
-                 f'fill="{col}" text-anchor="middle">{esc(big)}</text>')
-        p.append(f'<text class="mono" x="{cx:.0f}" y="{sy + 15}" font-size="10" '
+    sp = (W - 40) / len(stats)
+    for i, (big, small, c) in enumerate(stats):
+        cx = 20 + sp * i + sp / 2
+        p.append(f'<g class="lb" style="animation-delay:{2.3 + i * .08:.2f}s">')
+        p.append(f'<text class="mono" x="{cx:.0f}" y="{sy}" font-size="16" font-weight="700" '
+                 f'fill="{c}" text-anchor="middle">{esc(big)}</text>')
+        p.append(f'<text class="mono" x="{cx:.0f}" y="{sy + 14}" font-size="9.5" '
                  f'fill="{MUTED}" text-anchor="middle">{esc(small)}</text>')
         p.append("</g>")
 
     p.append("</svg>")
     return "\n".join(p)
+
 
 
 def main() -> None:
