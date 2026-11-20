@@ -19,30 +19,30 @@
 <text class="mono" x="50" y="69.5" font-size="9.5" fill="#565f89" text-anchor="end">2500</text>
 <line x1="58" y1="156" x2="754" y2="156" stroke="#2f3549" stroke-width="1.4"/>
 <text class="mono" x="58.0" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Dec</text>
-<text class="mono" x="101.1" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Jan</text>
-<text class="mono" x="158.6" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Feb</text>
-<text class="mono" x="216.1" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Mar</text>
-<text class="mono" x="287.9" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Apr</text>
-<text class="mono" x="345.4" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">May</text>
-<text class="mono" x="402.9" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Jun</text>
-<text class="mono" x="474.8" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Jul</text>
-<text class="mono" x="532.3" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Aug</text>
-<text class="mono" x="604.1" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Sep</text>
-<text class="mono" x="661.6" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Oct</text>
-<text class="mono" x="719.1" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Nov</text>
-<path class="ar" d="M58.0,156.0 L72.4,156.0 L86.7,156.0 L101.1,156.0 L115.5,156.0 L129.9,156.0 L144.2,156.0 L158.6,156.0 L173.0,156.0 L187.3,156.0 L201.7,156.0 L216.1,156.0 L230.5,156.0 L244.8,156.0 L259.2,156.0 L273.6,156.0 L287.9,156.0 L302.3,156.0 L316.7,156.0 L331.1,155.7 L345.4,155.7 L359.8,155.6 L374.2,155.6 L388.5,155.8 L402.9,155.7 L417.3,155.4 L431.7,155.3 L446.0,155.2 L460.4,154.6 L474.8,155.0 L489.2,153.8 L503.5,151.9 L517.9,149.4 L532.3,144.4 L546.6,139.2 L561.0,140.7 L575.4,130.9 L589.8,129.6 L604.1,121.2 L618.5,111.3 L632.9,110.0 L647.2,104.8 L661.6,109.5 L676.0,115.5 L690.4,117.6 L704.7,123.2 L719.1,121.4 L733.5,107.8 L747.8,86.9 L754.0,84.2 L754.0,156 L58.0,156 Z" fill="#9ece6a" fill-opacity=".15"/>
-<path class="ln" d="M58.0,156.0 L72.4,156.0 L86.7,156.0 L101.1,156.0 L115.5,156.0 L129.9,156.0 L144.2,156.0 L158.6,156.0 L173.0,156.0 L187.3,156.0 L201.7,156.0 L216.1,156.0 L230.5,156.0 L244.8,156.0 L259.2,156.0 L273.6,156.0 L287.9,156.0 L302.3,156.0 L316.7,156.0 L331.1,155.7 L345.4,155.7 L359.8,155.6 L374.2,155.6 L388.5,155.8 L402.9,155.7 L417.3,155.4 L431.7,155.3 L446.0,155.2 L460.4,154.6 L474.8,155.0 L489.2,153.8 L503.5,151.9 L517.9,149.4 L532.3,144.4 L546.6,139.2 L561.0,140.7 L575.4,130.9 L589.8,129.6 L604.1,121.2 L618.5,111.3 L632.9,110.0 L647.2,104.8 L661.6,109.5 L676.0,115.5 L690.4,117.6 L704.7,123.2 L719.1,121.4 L733.5,107.8 L747.8,86.9 L754.0,84.2" fill="none" stroke="#9ece6a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
-<g class="tip" transform="translate(754.0,84.2) rotate(-23.4)"><path d="M-13,-8 L3,0 L-13,8 L-9,0 Z" fill="#9ece6a"/></g>
+<text class="mono" x="101.0" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Jan</text>
+<text class="mono" x="158.3" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Feb</text>
+<text class="mono" x="215.6" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Mar</text>
+<text class="mono" x="287.3" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Apr</text>
+<text class="mono" x="344.6" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">May</text>
+<text class="mono" x="401.9" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Jun</text>
+<text class="mono" x="473.6" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Jul</text>
+<text class="mono" x="530.9" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Aug</text>
+<text class="mono" x="602.5" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Sep</text>
+<text class="mono" x="659.8" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Oct</text>
+<text class="mono" x="717.2" y="172" font-size="9.5" fill="#565f89" text-anchor="middle">Nov</text>
+<path class="ar" d="M58.0,156.0 L72.3,156.0 L86.7,156.0 L101.0,156.0 L115.3,156.0 L129.6,156.0 L144.0,156.0 L158.3,156.0 L172.6,156.0 L187.0,156.0 L201.3,156.0 L215.6,156.0 L230.0,156.0 L244.3,156.0 L258.6,156.0 L272.9,156.0 L287.3,156.0 L301.6,156.0 L315.9,156.0 L330.3,155.7 L344.6,155.7 L358.9,155.6 L373.2,155.6 L387.6,155.8 L401.9,155.7 L416.2,155.4 L430.6,155.3 L444.9,155.2 L459.2,154.6 L473.6,155.0 L487.9,153.8 L502.2,151.9 L516.5,149.4 L530.9,144.4 L545.2,139.2 L559.5,140.7 L573.9,130.9 L588.2,129.6 L602.5,121.2 L616.8,111.3 L631.2,110.0 L645.5,104.8 L659.8,109.5 L674.2,115.5 L688.5,117.6 L702.8,123.2 L717.2,121.4 L731.5,107.8 L745.8,86.9 L754.0,81.3 L754.0,156 L58.0,156 Z" fill="#9ece6a" fill-opacity=".15"/>
+<path class="ln" d="M58.0,156.0 L72.3,156.0 L86.7,156.0 L101.0,156.0 L115.3,156.0 L129.6,156.0 L144.0,156.0 L158.3,156.0 L172.6,156.0 L187.0,156.0 L201.3,156.0 L215.6,156.0 L230.0,156.0 L244.3,156.0 L258.6,156.0 L272.9,156.0 L287.3,156.0 L301.6,156.0 L315.9,156.0 L330.3,155.7 L344.6,155.7 L358.9,155.6 L373.2,155.6 L387.6,155.8 L401.9,155.7 L416.2,155.4 L430.6,155.3 L444.9,155.2 L459.2,154.6 L473.6,155.0 L487.9,153.8 L502.2,151.9 L516.5,149.4 L530.9,144.4 L545.2,139.2 L559.5,140.7 L573.9,130.9 L588.2,129.6 L602.5,121.2 L616.8,111.3 L631.2,110.0 L645.5,104.8 L659.8,109.5 L674.2,115.5 L688.5,117.6 L702.8,123.2 L717.2,121.4 L731.5,107.8 L745.8,86.9 L754.0,81.3" fill="none" stroke="#9ece6a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<g class="tip" transform="translate(754.0,81.3) rotate(-34.1)"><path d="M-13,-8 L3,0 L-13,8 L-9,0 Z" fill="#9ece6a"/></g>
 <g class="lb" style="animation-delay:2.15s">
-<text class="mono" x="728" y="82" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="end">1 994</text>
-<text class="mono" x="728" y="96" font-size="9.5" fill="#565f89" text-anchor="end">last 30 days &#183; +90%</text>
+<text class="mono" x="728" y="82" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="end">2 074</text>
+<text class="mono" x="728" y="96" font-size="9.5" fill="#565f89" text-anchor="end">last 30 days &#183; +91%</text>
 </g>
 <g class="lb" style="animation-delay:2.30s">
-<text class="mono" x="97" y="208" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="middle">5 076</text>
+<text class="mono" x="97" y="208" font-size="16" font-weight="700" fill="#9ece6a" text-anchor="middle">5 197</text>
 <text class="mono" x="97" y="222" font-size="9.5" fill="#565f89" text-anchor="middle">contributions</text>
 </g>
 <g class="lb" style="animation-delay:2.38s">
-<text class="mono" x="252" y="208" font-size="16" font-weight="700" fill="#ff9e64" text-anchor="middle">19</text>
+<text class="mono" x="252" y="208" font-size="16" font-weight="700" fill="#ff9e64" text-anchor="middle">21</text>
 <text class="mono" x="252" y="222" font-size="9.5" fill="#565f89" text-anchor="middle">day streak</text>
 </g>
 <g class="lb" style="animation-delay:2.46s">
@@ -50,7 +50,7 @@
 <text class="mono" x="406" y="222" font-size="9.5" fill="#565f89" text-anchor="middle">longest streak</text>
 </g>
 <g class="lb" style="animation-delay:2.54s">
-<text class="mono" x="560" y="208" font-size="16" font-weight="700" fill="#7dcfff" text-anchor="middle">134</text>
+<text class="mono" x="560" y="208" font-size="16" font-weight="700" fill="#7dcfff" text-anchor="middle">136</text>
 <text class="mono" x="560" y="222" font-size="9.5" fill="#565f89" text-anchor="middle">active days</text>
 </g>
 <g class="lb" style="animation-delay:2.62s">
